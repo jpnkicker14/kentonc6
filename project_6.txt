@@ -1,0 +1,23 @@
+BASIC CHRONOLOGICAL OUTLINE: 
+- Start off at space station on Earth
+- Choose up to 10 items to bring with you on your mission
+- Go into outer space
+- Choose which planet to colonize (only two possible "right" answers-will die on other planets. Mars & Jupiter)
+- Two different (but similar) possible gameplays (Mars or Jupiter)
+- Need to find 3 essential things: source of water, dangerous zones, empty field
+- Need to create 3 essential things: neighborhood in empty field, mode of transportation, blocked off dangerous areas
+- Need to have the correct materials to complete all tasks
+- WIN when complete all tasks
+- LOSE when cannot complete all tasks
+
+FUNCTIONS NEEDED:
+- choose (choose items)
+- walk
+- look
+- inventory
+- pickup
+- use (items)
+- talk? (maybe)
+
+MACROS NEEDED:
+- create locations

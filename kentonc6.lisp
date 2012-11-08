@@ -5,15 +5,17 @@
 
 (defparameter *ID* "Kenton Chun & Amy Takayesu")
 
+;prevents Allegro from chopping of messages
+(setf tpl:*print-length* nil)
 
 ;allowed commands
-(defparameter *allowed-commands* '(look walk pickup inventory help))
+(defparameter *allowed-commands* '(look fly pickup inventory help))
 
 ;nodes for the scenery stored in a list
-(defparameter *nodes* '())
+(defparameter *nodes* '((space-station (you are in the space station on planet earth.))))
 
 ;edges will store the paths and the choices you have from that location
-(defparameter *edges* '())
+(defparameter *edges* '((space-station (bluefish forward lightstream))))
 
 ;objects on the ground parmater 
 (defparameter *objects* '())
@@ -22,22 +24,7 @@
 (defparameter *object-locations* '())
 
 ;the default location 
-(defparameter *location* 'living-room)
-
-;keeps track if chain has been welded to the bucket
-;(defparameter *chain-welded* nil)
-
-;keeps track if bucket is filled
-;(defparameter *bucket-filled* nil)
-
-;keeps track if glass has vodka in it
-;(defparameter *vodka-in-glass* nil)
-
-;keeps track tonic-water has been added to the vodka in the glass
-;(defparameter *water-in-drink* nil)
-
-;keeps track of if the complete vodka tonic drink has been made
-;(defparameter *complete-vodka-tonic* nil)
+(defparameter *location* 'space-station)
 
 ;function that describes the location
 ;this function will use the assoc to find the location based from the nodes
@@ -73,7 +60,7 @@
           (describe-objects *location* *objects* *object-locations*)))
 
 ;takes a direction and moves to that location if it's legal
-(defun walk (direction)
+(defun fly (direction)
   (labels ((correct-way (edge)
              (eq (cadr edge) direction)))
     (let ((next (find-if #'correct-way (cdr (assoc *location* *edges*)))))
@@ -149,41 +136,7 @@
             '(i cant ,command like that.)))
           (pushnew ',command *allowed-commands*)))
 
-;uses game-action macro to allow user to offer the glass to the wizard if they have the glass, are in the living room, and have already mixed together the vodka and tonic-water and garnished it with the lime.
-;if the user also has picked up the coaster, the wizard will be happy and the user wins.
-;if the user has NOT picked up the coaster, the wizard will be unhappy and the user loses.
-;(game-action offer glass wizard living-room
-             (cond ((not *complete-vodka-tonic*) '(the drink has not been completely prepared.))
-                   ((have 'coaster) '(the wizard awakens and gladly accepts his favorite drink-a vodka tonic.
-                                      a disco ball is lowered from the ceiling. music starts playing.
-                                      the party has started! congratulations! you win.))
-                   (t '(the wizard awakens and gladly accepts his favorite drink-a vodka tonic.
-                        however once he places it on the coffee table it leaves a ring because you 
-                        forgot to give him a coaster. shame on you! you lose.))))
-
-;uses the game-action macro to allow the user to weld the chain to the bucket if they have both items and are in the attic.
-;(game-action weld chain bucket attic
-             (if (and (have 'bucket) (not *chain-welded*))
-                 (progn (setf *chain-welded* 't)
-                        '(the chain is now securely welded to the bucket.))
-               '(you do not have a bucket.)))
-
-;uses the game-action macro to allow the user to dunk the bucket in the well if they have a bucket, are in the garden, and have already welded the chain to the bucket.
-;(game-action dunk bucket well garden
-             (if *chain-welded* 
-                 (progn (setf *bucket-filled* 't)
-                        '(the bucket is now full of water))
-               '(the water level is too low to reach.)))
-
 ;uses the game-action macro to allow the user to splash the bucket of water on the wizard if they have a bucket, are in the living-room, and the bucket has been successfully filled with water.
-;(game-action splash bucket wizard living-room
-             (cond ((not *bucket-filled*) '(the bucket has nothing in it.))
-                   ((have 'frog) '(the wizard awakens and sees that you stole his frog. 
-                                   he is so upset he banishes you to the 
-                                   netherworlds- you lose! the end.))
-                   (t '(the wizard awakens from his slumber and greets you warmly. 
-                        he hands you the magic low-carb donut- you win! the end.))))
-
 ;macro that allows user to add a new object, using the parameters object(name of object) and the location (location of object).
 ;the object must not already exist, and the location must already exist 
 (defmacro add-object (object location &body body)
@@ -215,28 +168,31 @@
 ;macro allows user to add a new path, using the parameters portal (type of path), from(starting location), to (ending location), din (direction from starting location to ending location), and optional dback (direction from ending location to starting location)
 ;both locations must exist, and both locations cannot already have other locations in the designated positions. the two locations cannot already have a path between them.
 (defmacro add-path (portal from to din &optional dback)
-  ;checks if both locations exist
+  ;checks if both locations exist                                                                                                                       
   `(progn(if(and(member ',from (mapcar #'car *nodes*))
                    (member ',to (mapcar #'car *nodes*)))
-                  ;checks if a path already exists between the two locations
-                  (progn(if(not(member ',to (mapcar #'car(cdr(assoc ',from *edges*)))))
+             ;checks if a path already exists between the two locations                                                    
+             (progn(if(or(not(member ',to (mapcar #'car(cdr(assoc ',from *edges*)))))(eq *edges* nil))
                                   ;checks if the starting location does not already have a path in the requested direction
-                                   (if(not(member ',din (mapcar #'cadr(cdr(assoc ',from *edges*)))))
-                                       ;adds new path to defparameter *edges*
-                                          (progn (pushnew '(,to ,din ,portal) (cdr(assoc ',from *edges*)))  
-                                                      ;checks if path is two-directional 
+                                   (if(or(not(member ',din (mapcar #'cadr(cdr(assoc ',from *edges*)))))(eq *edges* nil))
+                                       ;adds new path to defparameter *edges*                                                                           
+                                          (progn (pushnew '(,to ,din ,portal) (cdr(assoc ',from *edges*)))
+                                                      ;checks if path is two-directional                                                                
                                                  (if(not(equal ',dback nil))
-                                                         ;checks if the ending location does not already have a path in the requested direction
+                                                         ;checks if the ending location does not already have a path in the requested direction         
                                                          (if(not(member ',dback (mapcar #'cadr (cdr(assoc ',to *edges*)))))
-                                                             ;adds new path in opposite direction to defparamter *edges*
+                                                             ;adds new path in opposite direction to defparamter *edges*                                
                                                              (progn(pushnew '(,from ,dback ,portal) (cdr(assoc ',to *edges*)))
                                                                          '(path has been added.))
                                                                  '(direction back not added to path))))
-                                      ;error statement if there is already a location connected to the starting location in the requested direction
+                                      ;error statement if there is already a location connected to the starting location in the requested direction     
                                       '(there is already a location connected to ,from from ,din))
-                               ;error statement if there is already a path connecting the two locations
+                               ;error statement if there is already a path connecting the two locations                                                 
                                '(path already exists.))
                            )
-              ;error statement if one or both or the locations do not exist.
-              '(one or more of the locations does not exist) 
-       )) 
+              ;error statement if one or both or the locations do not exist.                                                                            
+              '(one or more of the locations does not exist)
+       ))
+)
+
+(load "kentonc6_world.lisp")uhunix:/home04/a/amytaka% 

@@ -50,7 +50,7 @@
 ;function to describe the objects visible at a given location
 (defun describe-objects (loc objs obj-loc)
    (labels ((describe-obj (obj)
-                `(you see a ,obj on the floor.)))
+                `(you see a ,obj on the ground outside the spaceship.)))
       (apply #'append (mapcar #'describe-obj (objects-at loc objs obj-loc)))))
 
 ;will return all of the parameters

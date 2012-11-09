@@ -15,7 +15,7 @@
 (defparameter *nodes* '((space-station (you are in the space station on planet earth.))))
 
 ;edges will store the paths and the choices you have from that location
-(defparameter *edges* '((space-station (bluefish forward lightstream))))
+(defparameter *edges* '())
 
 ;objects on the ground parmater 
 (defparameter *objects* '())
@@ -34,7 +34,7 @@
 
 ;returns the descripiton based on the edge
 (defun describe-path (edge)
-  `(there is a ,(caddr edge) going ,(cadr edge) from here.))
+  `(you can go ,(cadr edge) from here.))
 
 ;will call the describe path if there is more than one possible path
 ;the map car will be applyed to every member of the list  
@@ -167,32 +167,34 @@
 
 ;macro allows user to add a new path, using the parameters portal (type of path), from(starting location), to (ending location), din (direction from starting location to ending location), and optional dback (direction from ending location to starting location)
 ;both locations must exist, and both locations cannot already have other locations in the designated positions. the two locations cannot already have a path between them.
-(defmacro add-path (portal from to din &optional dback)
-  ;checks if both locations exist                                                                                                                       
-  `(progn(if(and(member ',from (mapcar #'car *nodes*))
-                   (member ',to (mapcar #'car *nodes*)))
-             ;checks if a path already exists between the two locations                                                    
-             (progn(if(or(not(member ',to (mapcar #'car(cdr(assoc ',from *edges*)))))(eq *edges* nil))
-                                  ;checks if the starting location does not already have a path in the requested direction
-                                   (if(or(not(member ',din (mapcar #'cadr(cdr(assoc ',from *edges*)))))(eq *edges* nil))
-                                       ;adds new path to defparameter *edges*                                                                           
-                                          (progn (pushnew '(,to ,din ,portal) (cdr(assoc ',from *edges*)))
-                                                      ;checks if path is two-directional                                                                
-                                                 (if(not(equal ',dback nil))
-                                                         ;checks if the ending location does not already have a path in the requested direction         
-                                                         (if(not(member ',dback (mapcar #'cadr (cdr(assoc ',to *edges*)))))
-                                                             ;adds new path in opposite direction to defparamter *edges*                                
-                                                             (progn(pushnew '(,from ,dback ,portal) (cdr(assoc ',to *edges*)))
-                                                                         '(path has been added.))
-                                                                 '(direction back not added to path))))
-                                      ;error statement if there is already a location connected to the starting location in the requested direction     
-                                      '(there is already a location connected to ,from from ,din))
-                               ;error statement if there is already a path connecting the two locations                                                 
-                               '(path already exists.))
-                           )
-              ;error statement if one or both or the locations do not exist.                                                                            
-              '(one or more of the locations does not exist)
-       ))
+(defmacro add-path (start fin din &optional dback)
+  `(progn(add-path-helper ,start ,fin ,din)
+  ;checks if path is two-directional
+  (if(not(equal ',dback nil))
+          (add-path-helper ,fin ,start ,dback)))
 )
 
-(load "kentonc6_world.lisp")uhunix:/home04/a/amytaka% 
+
+(defmacro add-path-helper(start fin dir)
+  ;checks if both locations exist                                                                                                                       
+  `(if(and(member ',start (mapcar #'car *nodes*))
+                   (member ',fin (mapcar #'car *nodes*)))
+        ;check if location exist in edges
+	     ;if not pushnew location to edges
+             (progn(if(not(member ',start (mapcar #'car *edges*)))
+                 (pushnew '(,start)*edges*))
+	     ;checks if a path already exists between the two locations                                        
+	    (if(not(member ',fin (mapcar #'car(cdr(assoc ',start *edges*)))))
+                       ;checks if the starting location does not already have a path in the requested direction
+                       (if(not(member ',dir (mapcar #'cadr(cdr(assoc ',start *edges*)))))
+                           ;adds new path to defparameter *edges*                                                                           
+                           (progn (pushnew '(,fin ,dir) (cdr(assoc ',start *edges*))))
+                      ;error statement if there is already a location connected to the starting location in the requested direction     
+                      '(there is already a location connected to ,fin from ,dir))
+             ;error statement if there is already a path connecting the two locations                                                 
+             '(path already exists.)))
+  ;error statement if one or both or the locations do not exist.                                                                            
+  '(one or more of the locations does not exist))
+)
+ 
+(load "kentonc6_world.lisp")

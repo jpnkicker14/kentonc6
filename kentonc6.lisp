@@ -12,7 +12,7 @@
 (defparameter *allowed-commands* '(look fly pickup inventory help))
 
 ;nodes for the scenery stored in a list
-(defparameter *nodes* '((space-station (you are in the space station on planet earth.))))
+(defparameter *nodes* '((earth (you are in the space station on planet earth.))))
 
 ;edges will store the paths and the choices you have from that location
 (defparameter *edges* '())
@@ -24,7 +24,7 @@
 (defparameter *object-locations* '())
 
 ;the default location 
-(defparameter *location* 'space-station)
+(defparameter *location* 'earth)
 
 ;function that describes the location
 ;this function will use the assoc to find the location based from the nodes
@@ -71,10 +71,20 @@
 
 ;tracks the location of objects 
 (defun pickup (object)
-  (cond ((member object (objects-at *location* *objects* *object-locations*))
-         (push (list object 'body) *object-locations*)
-         `(you are now carrying the ,object))
-          (t '(you cannot get that.))))
+  ;first check if you are at earth as that will have a limit on the amount you can pickup 
+  (if(eq *location* 'earth)
+      ;check if less than 5
+      (progn(if(<(list-length(objects-at 'body *objects* *object-locations*))5)
+		(progn(push (list object 'body) *object-locations*)
+	      `(you are now carrying the, object))
+	      '(you cannot get that.)))
+    ;if its not on earth
+    ;check if you can pick it up
+    (if(member object (objects-at *location* *objects* *object-locations*))
+	(progn(push(list object 'body) *object-locations*)
+	      `(you are now carrying the ,object))
+      '(you cannot get that.))
+))	    
 
 ;keeps track of the objects that were picked up 
 (defun inventory ()
@@ -137,7 +147,7 @@
           (pushnew ',command *allowed-commands*)))
 
 ;uses the game-action macro to allow the user to splash the bucket of water on the wizard if they have a bucket, are in the living-room, and the bucket has been successfully filled with water.
-;macro that allows user to add a new object, using the parameters object(name of object) and the location (location of object).
+;macro that allows user to add a new object, using the parameters object(name of object) and the location (loca tion of object).
 ;the object must not already exist, and the location must already exist 
 (defmacro add-object (object location &body body)
 ;checks if the object already exists

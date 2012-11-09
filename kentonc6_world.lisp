@@ -7,9 +7,25 @@
 (add-location p5 you have just landed on planet newdinosaur the planet of lizards.) 
 
 ;paths
-(add-path space-station bluefish forward)
+(add-path earth bluefish forward)
 (add-path bluefish p1 left right)
 (add-path bluefish p2 right left)
 (add-path bluefish pcrash forward)
 (add-path bluefish p4 up down)
 (add-path bluefish p5 down up)
+
+;objects on earth
+(add-object shovel-head earth)
+(add-object screwdriver earth)
+(add-object nails earth)
+(add-object seeds earth)
+(add-object pillow earth)
+(add-object hammer-head earth)
+(add-object flashlight earth)
+(add-object knife earth)
+(add-object iPhone earth)
+(add-object matches earth)
+
+;objects in other locations
+
+;create game-actions

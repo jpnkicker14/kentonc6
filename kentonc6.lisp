@@ -5,7 +5,7 @@
 
 (defparameter *ID* "Kenton Chun & Amy Takayesu")
 
-;prevents Allegro from chopping of messages
+;prevents Allegro from chopping off messages
 (setf tpl:*print-length* nil)
 
 ;allowed commands
@@ -25,6 +25,9 @@
 
 ;the default location 
 (defparameter *location* 'earth)
+
+;keeps track of if the hammer has been welded yet
+(defparameter *hammer-welded* nil)
 
 ;function that describes the location
 ;this function will use the assoc to find the location based from the nodes

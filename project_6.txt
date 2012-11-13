@@ -21,3 +21,24 @@ FUNCTIONS NEEDED:
 
 MACROS NEEDED:
 - create locations
+
+Changes: (Kenton)
+- Start off at space station on Earth
+- Choose up to 5 items to bring with you on your mission
+- Go into outer space
+- Choose which planet to colonize (only one possible "right" answers-will die on other planets.)
+- Two different (but similar) possible gameplays
+- Need to find 3 essential things: source of water, food?, empty field
+- Need to have the correct materials to complete all tasks
+- WIN when complete all tasks
+- LOSE die
+
+FUNCTIONS NEEDED:
+- choose (choose items) 5 items
+- fly
+- look
+- inventory
+- pickup
+- use (items)
+- reset
+- help

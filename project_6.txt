@@ -1,44 +1,38 @@
-BASIC CHRONOLOGICAL OUTLINE: 
-- Start off at space station on Earth
-- Choose up to 10 items to bring with you on your mission
-- Go into outer space
-- Choose which planet to colonize (only two possible "right" answers-will die on other planets. Mars & Jupiter)
-- Two different (but similar) possible gameplays (Mars or Jupiter)
-- Need to find 3 essential things: source of water, dangerous zones, empty field
-- Need to create 3 essential things: neighborhood in empty field, mode of transportation, blocked off dangerous areas
-- Need to have the correct materials to complete all tasks
-- WIN when complete all tasks
-- LOSE when cannot complete all tasks
 
-FUNCTIONS NEEDED:
-- choose (choose items)
-- walk
-- look
-- inventory
-- pickup
-- use (items)
-- talk? (maybe)
-
-MACROS NEEDED:
-- create locations
-
-Changes: (Kenton)
 - Start off at space station on Earth
 - Choose up to 5 items to bring with you on your mission
+	- hammer-head, shovel-head, seeds, flashlight, knife
 - Go into outer space
-- Choose which planet to colonize (only one possible "right" answers-will die on other planets.)
-- Two different (but similar) possible gameplays
-- Need to find 3 essential things: source of water, food?, empty field
-- Need to have the correct materials to complete all tasks
-- WIN when complete all tasks
-- LOSE die
+- weld a hammer
+- attach a shovel
+- pick up wood & bricks
+- build house
+- build fence
+- dig well
+- plant seeds (need flashlight) 
+- settle 
+	- fight aliens
+levels of winning:
+	beginner - alien win
+	intermediate - 2
+	expert - 3
+	professional - 4
+	president - 5
+	
+	
+	
 
-FUNCTIONS NEEDED:
-- choose (choose items) 5 items
-- fly
-- look
-- inventory
-- pickup
-- use (items)
-- reset
-- help
+Lose:
+*planet w/o exit
+*banana poison
+*wrong items 
+*lose aliens 
+
+	-riddles/clues to help choose item and what to do at location
+
+-reset anytime, and game end
+-help
+
+
+
+

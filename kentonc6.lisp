@@ -29,6 +29,21 @@
 ;keeps track of if the hammer has been welded yet
 (defparameter *hammer-welded* nil)
 
+;keeps track of if the shovel has been welded yet
+(defparameter *shovel-attached* nil)
+
+;keeps track of if the house has been built yet
+(defparameter *house-built* nil)
+
+;keeps track of if the fence has been built yet
+(defparameter *fence-set-up* nil)
+
+;keeps track of if the tank has been filled with water
+(defparameter *tank-dunked* nil)
+
+;keep track of if the well has been dug
+(defparameter *well-dug* nil)
+
 ;function that describes the location
 ;this function will use the assoc to find the location based from the nodes
 ;then cadr will return the description  
@@ -78,16 +93,16 @@
   (if(eq *location* 'earth)
       ;check if less than 5
       (progn(if(<(list-length(objects-at 'body *objects* *object-locations*))5)
-		(progn(push (list object 'body) *object-locations*)
-	      `(you are now carrying the, object))
-	      '(you cannot get that.)))
+                (progn(push (list object 'body) *object-locations*)
+              `(you are now carrying the, object))
+              '(you cannot get that.)))
     ;if its not on earth
     ;check if you can pick it up
     (if(member object (objects-at *location* *objects* *object-locations*))
-	(progn(push(list object 'body) *object-locations*)
-	      `(you are now carrying the ,object))
+        (progn(push(list object 'body) *object-locations*)
+              `(you are now carrying the ,object))
       '(you cannot get that.))
-))	    
+))          
 
 ;keeps track of the objects that were picked up 
 (defun inventory ()
@@ -193,11 +208,11 @@
   `(if(and(member ',start (mapcar #'car *nodes*))
                    (member ',fin (mapcar #'car *nodes*)))
         ;check if location exist in edges
-	     ;if not pushnew location to edges
+             ;if not pushnew location to edges
              (progn(if(not(member ',start (mapcar #'car *edges*)))
                  (pushnew '(,start)*edges*))
-	     ;checks if a path already exists between the two locations                                        
-	    (if(not(member ',fin (mapcar #'car(cdr(assoc ',start *edges*)))))
+             ;checks if a path already exists between the two locations                                        
+            (if(not(member ',fin (mapcar #'car(cdr(assoc ',start *edges*)))))
                        ;checks if the starting location does not already have a path in the requested direction
                        (if(not(member ',dir (mapcar #'cadr(cdr(assoc ',start *edges*)))))
                            ;adds new path to defparameter *edges*                                                                           

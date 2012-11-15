@@ -52,6 +52,7 @@
 
 (game-action dig shovel land p5
              (cond (*well-dug* '(you have already dug a well.))
+                   ((not *fence-set-up*) '(it looks like there is going to be an asteroid shower soon. maybe you should build a secure shelter first...))
                    (t (setf *well-dug* 't)
                       '(you have dug a hole deep enough to hit a water source and create a well!))))
 
@@ -66,3 +67,10 @@
                    (*fence-set-up* '(you have already set-up a fence.))
                    (t (setf *fence-set-up* 't)
                      '(you have successfully set up a protective wooden fence around your house.))))
+
+(game-action plant seeds land p5
+             (cond (*seeds-planted* '(you have already planted your seeds.))
+                   ((not *well-dug*) '(you need some kind of source of water first if you want to plant seeds.))
+                   ((not (have 'flashlight)) '(your seeds need artificial light to begin growing.))
+                   (t (setf *seeds-planted* 't)
+                      '(you have successfully planted your seeds and set up artifical lighting with your flashlight so that they can begin growing.))))

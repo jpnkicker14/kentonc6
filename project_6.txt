@@ -33,6 +33,22 @@ Lose:
 -reset anytime, and game end
 -help
 
+TO DO:
+game:
+- help: include use of start-over
+- messages
+- eat 
+- beginning riddle
+- comments 
+
+doc:
+
+output 
+
+more tests
+
+individual task/description files
+
 
 
 

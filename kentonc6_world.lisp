@@ -2,7 +2,7 @@
 (add-location bluefish you have successfully landed on planet bluefish the planet with the purple fish. though you may not be able to eat the fish use this planet as your center if you get lost.)
 (add-location p1 you have just landed on the giving planet.);wood bricks
 (add-location p2 you have just landed on planet octopusdisco. what you see on the ground does not mean there were hoes but you may want it for another garden tool.);shovel
-(add-location pcrash you have just crash landed on planet hollywood. there is no visible way out instead of partying forver the game will reset.);crash
+(add-location pcrash you have just crash landed on planet hollywood. there is no visible way out instead of partying forever. you can type start-over or quit.);crash
 (add-location p4 you have just landed on the garden of wheat thins. the lizard seems to be pointing at something on the ground.);poison 
 (add-location p5 you have just landed on planet aladdin.);settle 
 (add-location p6 you have just landed on planet fifty-one. ever heard of it?)
@@ -38,6 +38,8 @@
 (add-object wood-pile p1)
 (add-object gold-pole p8)
 (add-object steel-pole p2)
+(add-object apple p7)
+(add-object strawberry p6)
 
 ;create game-actions
 (game-action weld gold-pole hammer-head p8

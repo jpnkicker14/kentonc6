@@ -1,15 +1,10 @@
-; Assignment 6
-; Author: Kenton Chun
-; Author: Amy Takayesu
-; a lot of code comes from the Land of Lisp book
-
 (defparameter *ID* "Kenton Chun & Amy Takayesu")
 
 ;prevents Allegro from chopping off messages
 (setf tpl:*print-length* nil)
 
 ;allowed commands
-(defparameter *allowed-commands* '(look fly pickup inventory help))
+(defparameter *allowed-commands* '(look fly pickup inventory help settle))
 
 ;nodes for the scenery stored in a list
 (defparameter *nodes* '((earth (you are in the space station on planet earth.))))
@@ -43,6 +38,9 @@
 
 ;keep track of if the well has been dug
 (defparameter *well-dug* nil)
+
+;keeps track of it the seeds have been planted
+(defparameter *seeds-planted* nil)
 
 ;function that describes the location
 ;this function will use the assoc to find the location based from the nodes
@@ -103,6 +101,16 @@
               `(you are now carrying the ,object))
       '(you cannot get that.))
 ))          
+
+;use at the end when user is satisfied with their work done in outer space and want to settle
+(defun settle ()
+  (if (not (have 'knife))
+      '(you are about to settle peacefully on your new planet when suddenly a giant alien appears out of nowhere! as you search frantically for some kind of weapon to defend yourself it reaches out and touches you with one of its long greasy alien arms and then picks you up and eats you. i guess you should have brought a weapon.)
+    (progn (cond ((and *fence-set-up* *well-dug* *seeds-planted*) '(president))
+                 ((and (not *seeds-planted*) *fence-set-up* *well-dug*) '(professional))
+                 ((and (not *well-dug*) *fence-set-up*) '(expert))
+                 ((and (not *fence-set-up*) *house-built*) '(intermediate))
+                 (t '(beginner))))))
 
 ;keeps track of the objects that were picked up 
 (defun inventory ()

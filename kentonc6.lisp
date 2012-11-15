@@ -4,7 +4,7 @@
 (setf tpl:*print-length* nil)
 
 ;allowed commands
-(defparameter *allowed-commands* '(look fly pickup inventory help settle))
+(defparameter *allowed-commands* '(look fly pickup inventory help settle start-over))
 
 ;nodes for the scenery stored in a list
 (defparameter *nodes* '((earth (you are in the space station on planet earth.))))
@@ -231,6 +231,21 @@
              '(path already exists.)))
   ;error statement if one or both or the locations do not exist.                                                                            
   '(one or more of the locations does not exist))
+)
+
+(defun start-over ()
+  (setf *location* 'earth)
+  (setf *hammer-welded* nil)
+  (setf *shovel-attached* nil)
+  (setf *house-built* nil)
+  (setf *fence-set-up* nil)
+  (setf *tank-dunked* nil)
+  (setf *well-dug* nil)
+  (setf *seeds-planed* nil)
+  (setf *objects* '())
+  (setf *object-locations* '())
+  (load "kentonc6_world.lisp")
+  (look)
 )
  
 (load "kentonc6_world.lisp")

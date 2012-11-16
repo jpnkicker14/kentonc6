@@ -101,13 +101,14 @@
 
 ;use at the end when user is satisfied with their work done in outer space and want to settle
 (defun settle ()
-  (if (not (have 'knife))
+   (if (not (eq *location* p5) '(you cannot settle here. the conditions are not right.)
+  (progn (if (not (have 'knife))
       '(you are about to settle peacefully on your new planet when suddenly a giant alien appears out of nowhere! as you search frantically for some kind of weapon to defend yourself it reaches out and touches you with one of its long greasy alien arms and then picks you up and eats you. i guess you should have brought a weapon. colonizer level 0. you can type start-over or quit.)
     (progn (cond ((and *fence-set-up* *well-dug* *seeds-planted*) '(an alien sees that you are trying to settle on his planet and tries to stop you by throwing hot bananas at your face. luckily you were smart enough to bring a knife to defend yourself. congratulations! you have succesfully built shelter and protection and a source of water and a source of food. you will be able to sustain an entire colony here while you watch from afar as earth slowly withers away. colonizer level 5. you can type start-over or quit.))
                  ((and (not *seeds-planted*) *fence-set-up* *well-dug*) '(an alien sees that you are trying to settle on his planet and tries to stop you by talking smack about your grandma. luckily you were smart enough to bring a knife to defend yourself. good job on creating your own shelter and protection and source of water. too bad you will eventually starve to death because you have no food to eat. colonizer level 4. you can type start-over or quit.))
                  ((and (not *well-dug*) *fence-set-up*) '(an alien sees that you are trying to settle on his planet and tries to stop you by challenging you to a dance battle. luckily you were smart enough to bring a knife to defend yourself. good job on creating a shelter and protection. but i dont know what you are going to do without food and water. should have thought about that earlier! colonizer level 3. you can type start-over or quit.))
                  ((and (not *fence-set-up*) *house-built*) '(an alien sees that you are trying to settle on his planet and tries to stop you by jumping up and down ferociously to create giant planet tremors. luckily you were smart enough to bring a knife to defend yourself. good job on creating a shelter! but i think you are going to need more protection than that. also you will either starve or dehydrate yourself to death. have fun with that. colonizer level 2. you can type start-over or quit.))
-                 (t '(an alien sees that you are trying to settle on his planet and tries to stop you by excreting digusting alien slime in your general direction. luckily you were smart enough to bring a knife to defend yourself. now you are stuck alone on a strange planet with no shelter protection or food or water. maybe you should have just kept the alien so youd have company. colonizer level 1. you can type start-over or quit.))))))
+                 (t '(an alien sees that you are trying to settle on his planet and tries to stop you by excreting digusting alien slime in your general direction. luckily you were smart enough to bring a knife to defend yourself. now you are stuck alone on a strange planet with no shelter protection or food or water. maybe you should have just kept the alien so youd have company. colonizer level 1. you can type start-over or quit.))))))))
 
 ;keeps track of the objects that were picked up 
 (defun inventory ()
@@ -156,7 +157,7 @@
 
 ;prints out descriptions of available commands
 (defun help ()
-  (format t "You have reached the list of commands. ~% look: Describes your current location. This includes objects in the room furniture and exit. ~% walk direction: Choose which direction to walk in and your character will do so as long as there is some kind of an exit in that direction. ~% pickup item: pick up an item and put it in your inventory. ~% have item: Checks if you have an item in your possession. ~% inventory: Lists all of the items that you currently have in your possession."))
+  (format t "You have reached the list of commands. ~% look: Describes your current location. This includes objects in the room furniture and exit. ~% fly direction: Choose which direction to fly in and your character will do so as long as there is some kind of path in that direction. ~% pickup item: Pick up an item and put it in your inventory. ~% inventory: Lists all of the items that you currently have in your possession. ~% settle: When you are satisfied with your living conditions on your new planet you must choose to settle and your outcome will be determined. ~% start-over: Restart game back on planet earth."))
 
 ;macro that creates an action that can be performed if the user is in the correct location and has the correct objects
 (defmacro game-action (command subj obj place &body body)

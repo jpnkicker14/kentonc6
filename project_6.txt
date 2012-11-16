@@ -1,4 +1,3 @@
-
 - Start off at space station on Earth
 - Choose up to 5 items to bring with you on your mission
 	- hammer-head, shovel-head, seeds, flashlight, knife
@@ -49,6 +48,8 @@ output
 more tests
 
 individual task/description files
+
+UPDATE: THURS 303 PM. added eat function and settle check location. still need to test both of them.
 
 
 

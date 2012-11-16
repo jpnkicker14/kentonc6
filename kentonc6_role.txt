@@ -1,0 +1,11 @@
+Kenton Chun
+ICS 313 
+Assignment 6
+11/15/2012
+
+Moved and reconfigured code that could be reused from previous assignments.  Lead on user guide.  
+added function (start-over)
+½ of world design and code.
+½ debugging error checking.
+½ of comments
+created flyer

@@ -18,19 +18,19 @@
 (add-path bluefish p5 up down)
 (add-path p1 p6 forward back)
 (add-path p5 p7 left right)
-(add-path p7 p8 foward back)
+(add-path p7 p8 forward back)
 
 ;objects on earth
 (add-object shovel-head earth)
 (add-object screwdriver earth)
-(add-object nails earth)
+(add-object radio earth)
 (add-object seeds earth)
 (add-object pillow earth)
 (add-object hammer-head earth)
 (add-object flashlight earth)
 (add-object knife earth)
 (add-object iPhone earth)
-(add-object matches earth)
+(add-object chair earth)
 
 ;objects in other locations
 (add-object banana p4)

@@ -4,10 +4,10 @@
 (setf tpl:*print-length* nil)
 
 ;allowed commands
-(defparameter *allowed-commands* '(look fly pickup inventory help settle start-over))
+(defparameter *allowed-commands* '(look fly pickup inventory help settle start-over eat))
 
 ;nodes for the scenery stored in a list
-(defparameter *nodes* '((earth (you are in the space station on planet earth.))))
+(defparameter *nodes* '((earth (december 2012 you are in the space station on planet earth. the world around you has erupted in utter chaos. it is up to you to take the risky journey into the final frontier and create an inhabitable environment on a suitable planet for a future colony. quick! grab five items to take with you. Choose wisely. Use your primal instincts!))))
 
 ;edges will store the paths and the choices you have from that location
 (defparameter *edges* '())
@@ -99,20 +99,23 @@
       '(you cannot get that.))
 ))          
 
-;allows user to eat edible objects
+;allows user to eat edible objects if you have it 
 (defun eat (object)
    ;first check if you have the object
-   (if (not (have ',object)) `(you dont have the ,object)
-   (progn (cond ((eq object banana) '(you have eaten the poisonous banana! you were warned but now you are dead. you can type start-over or quit.))
-               ((eq object apple) '(you have just eaten an apple. it was pretty good. but now you are even more hungry.))
-               ((eq object strawberry) '(you have just eaten a strawberry. it was delicious and you wonder how it got there in the first place.))))))
-               
+   (if (not (have object)) `(you dont have the ,object)
+     ;checks if edible and what kind
+   (progn (cond ((eq object 'banana) '(you have eaten the poisonous banana! you were warned but now you are dead. you can type start-over or quit.))
+               ((eq object 'apple) '(you have just eaten an apple. it was pretty good. but now you are even more hungry.))
+               ((eq object 'strawberry) '(you have just eaten a strawberry. it was delicious and you wonder how it got there in the first place.))))))          
 
 ;use at the end when user is satisfied with their work done in outer space and want to settle
 (defun settle ()
-   (if (not (eq *location* p5) '(you cannot settle here. the conditions are not right.)
+;checks location-can only settle on one particular planet
+ (if (not (eq *location*'p5)) '(you cannot settle here. the conditions are not right.)
+;checks if you have a knife. if you dont then you automatically lose
   (progn (if (not (have 'knife))
       '(you are about to settle peacefully on your new planet when suddenly a giant alien appears out of nowhere! as you search frantically for some kind of weapon to defend yourself it reaches out and touches you with one of its long greasy alien arms and then picks you up and eats you. i guess you should have brought a weapon. colonizer level 0. you can type start-over or quit.)
+;if you do have the knife, you can win on five different levels depending on how many survival tasks you completed
     (progn (cond ((and *fence-set-up* *well-dug* *seeds-planted*) '(an alien sees that you are trying to settle on his planet and tries to stop you by throwing hot bananas at your face. luckily you were smart enough to bring a knife to defend yourself. congratulations! you have succesfully built shelter and protection and a source of water and a source of food. you will be able to sustain an entire colony here while you watch from afar as earth slowly withers away. colonizer level 5. you can type start-over or quit.))
                  ((and (not *seeds-planted*) *fence-set-up* *well-dug*) '(an alien sees that you are trying to settle on his planet and tries to stop you by talking smack about your grandma. luckily you were smart enough to bring a knife to defend yourself. good job on creating your own shelter and protection and source of water. too bad you will eventually starve to death because you have no food to eat. colonizer level 4. you can type start-over or quit.))
                  ((and (not *well-dug*) *fence-set-up*) '(an alien sees that you are trying to settle on his planet and tries to stop you by challenging you to a dance battle. luckily you were smart enough to bring a knife to defend yourself. good job on creating a shelter and protection. but i dont know what you are going to do without food and water. should have thought about that earlier! colonizer level 3. you can type start-over or quit.))
@@ -166,7 +169,7 @@
 
 ;prints out descriptions of available commands
 (defun help ()
-  (format t "You have reached the list of commands. ~% look: Describes your current location. This includes objects in the room furniture and exit. ~% fly direction: Choose which direction to fly in and your character will do so as long as there is some kind of path in that direction. ~% pickup item: Pick up an item and put it in your inventory. ~% inventory: Lists all of the items that you currently have in your possession. ~% settle: When you are satisfied with your living conditions on your new planet you must choose to settle and your outcome will be determined. ~% start-over: Restart game back on planet earth."))
+  (format t "You have reached the list of commands. ~% look: Describes your current location. This includes objects in the room furniture and exit. ~% fly direction: Choose which direction to fly in and your character will do so as long as there is some kind of path in that direction. ~% pickup item: Pick up an item and put it in your inventory. ~% eat: Allows you to eat an edible object in your possession. ~% inventory: Lists all of the items that you currently have in your possession. ~% settle: When you are satisfied with your living conditions on your new planet you must choose to settle and your outcome will be determined. ~% start-over: Restart game back on planet earth."))
 
 ;macro that creates an action that can be performed if the user is in the correct location and has the correct objects
 (defmacro game-action (command subj obj place &body body)

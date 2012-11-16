@@ -1,0 +1,280 @@
+dribbling to file "kentonc6_out.txt"
+ 
+NIL
+CL-USER(19): :ld kentonc6.lisp
+; Loading /home04/19/kentonc/ics313/kentonc6/kentonc6.lisp
+;   Loading /home04/19/kentonc/ics313/kentonc6/kentonc6_world.lisp
+CL-USER(20): (game-repl)
+look
+December 2012 you are in the space station on planet earth. The world
+ around you has erupted in utter chaos. It is up to you to take the
+ risky journey into the final frontier and create an inhabitable
+ environment on a suitable planet for a future colony. Quick! Grab five
+ items to take with you. Choose wisely. Use your primal instincts! You
+ can go up from here. You see a chair on the ground outside the
+ spaceship. You see a iphone on the ground outside the spaceship. You
+ see a knife on the ground outside the spaceship. You see a flashlight
+ on the ground outside the spaceship. You see a hammer-head on the
+ ground outside the spaceship. You see a pillow on the ground outside
+ the spaceship. You see a seeds on the ground outside the spaceship.
+ you see a radio on the ground outside the spaceship. You see a
+ screwdriver on the ground outside the spaceship. You see a shovel-head
+ on the ground outside the spaceship.
+pickup chair
+You are now carrying the chair
+help
+You have reached the list of commands. 
+ look: Describes your current location. This includes objects in the room furniture and exit. 
+ fly direction: Choose which direction to fly in and your character will do so as long as there is some kind of path in that direction. 
+ pickup item: Pick up an item and put it in your inventory. 
+ eat: Allows you to eat an edible object in your possession. 
+ inventory: Lists all of the items that you currently have in your possession. 
+ settle: When you are satisfied with your living conditions on your new planet you must choose to settle and your outcome will be determined. 
+ start-over: Restart game back on planet earth.Nil
+fly up
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly back
+You have just landed on the garden of wheat thins. The lizard seems to
+ be pointing at something on the ground. You can go forward from here.
+ you see a banana on the ground outside the spaceship.
+pickup banana
+You are now carrying the banana
+eat banana
+You have eaten the poisonous banana! You were warned but now you are
+ dead. You can type start-over or quit.
+start-over
+; Loading /home04/19/kentonc/ics313/kentonc6/kentonc6_world.lisp
+December 2012 you are in the space station on planet earth. The world
+ around you has erupted in utter chaos. It is up to you to take the
+ risky journey into the final frontier and create an inhabitable
+ environment on a suitable planet for a future colony. Quick! Grab five
+ items to take with you. Choose wisely. Use your primal instincts! You
+ can go up from here. You see a chair on the ground outside the
+ spaceship. You see a iphone on the ground outside the spaceship. You
+ see a knife on the ground outside the spaceship. You see a flashlight
+ on the ground outside the spaceship. You see a hammer-head on the
+ ground outside the spaceship. You see a pillow on the ground outside
+ the spaceship. You see a seeds on the ground outside the spaceship.
+ you see a radio on the ground outside the spaceship. You see a
+ screwdriver on the ground outside the spaceship. You see a shovel-head
+ on the ground outside the spaceship.
+pickup iphone
+You are now carrying the iphone
+fly up
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly forward
+You have just crash landed on planet hollywood. There is no visible
+ way out instead of partying forever. You can type start-over or quit.
+start-over
+; Loading /home04/19/kentonc/ics313/kentonc6/kentonc6_world.lisp
+December 2012 you are in the space station on planet earth. The world
+ around you has erupted in utter chaos. It is up to you to take the
+ risky journey into the final frontier and create an inhabitable
+ environment on a suitable planet for a future colony. Quick! Grab five
+ items to take with you. Choose wisely. Use your primal instincts! You
+ can go up from here. You see a chair on the ground outside the
+ spaceship. You see a iphone on the ground outside the spaceship. You
+ see a knife on the ground outside the spaceship. You see a flashlight
+ on the ground outside the spaceship. You see a hammer-head on the
+ ground outside the spaceship. You see a pillow on the ground outside
+ the spaceship. You see a seeds on the ground outside the spaceship.
+ you see a radio on the ground outside the spaceship. You see a
+ screwdriver on the ground outside the spaceship. You see a shovel-head
+ on the ground outside the spaceship.
+pickup radio
+You are now carrying the radio
+fly up
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+settle
+You cannot settle here. The conditions are not right.
+fly up
+You have just landed on planet aladdin. You can go left from here. You
+ can go down from here.
+settle
+You are about to settle peacefully on your new planet when suddenly a
+ giant alien appears out of nowhere! As you search frantically for some
+ kind of weapon to defend yourself it reaches out and touches you with
+ one of its long greasy alien arms and then picks you up and eats you.
+ i guess you should have brought a weapon. Colonizer level 0 you can
+ type start-over or quit.
+start-over
+; Loading /home04/19/kentonc/ics313/kentonc6/kentonc6_world.lisp
+December 2012 you are in the space station on planet earth. The world
+ around you has erupted in utter chaos. It is up to you to take the
+ risky journey into the final frontier and create an inhabitable
+ environment on a suitable planet for a future colony. Quick! Grab five
+ items to take with you. Choose wisely. Use your primal instincts! You
+ can go up from here. You see a chair on the ground outside the
+ spaceship. You see a iphone on the ground outside the spaceship. You
+ see a knife on the ground outside the spaceship. You see a flashlight
+ on the ground outside the spaceship. You see a hammer-head on the
+ ground outside the spaceship. You see a pillow on the ground outside
+ the spaceship. You see a seeds on the ground outside the spaceship.
+ you see a radio on the ground outside the spaceship. You see a
+ screwdriver on the ground outside the spaceship. You see a shovel-head
+ on the ground outside the spaceship.
+pickup knife
+You are now carrying the knife
+fly up
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly up
+You have just landed on planet aladdin. You can go left from here. You
+ can go down from here.
+settle
+An alien sees that you are trying to settle on his planet and tries to
+ stop you by excreting digusting alien slime in your general direction.
+ luckily you were smart enough to bring a knife to defend yourself. Now
+ you are stuck alone on a strange planet with no shelter protection or
+ food or water. Maybe you should have just kept the alien so youd have
+ company. Colonizer level 1 you can type start-over or quit.
+start-over
+; Loading /home04/19/kentonc/ics313/kentonc6/kentonc6_world.lisp
+December 2012 you are in the space station on planet earth. The world
+ around you has erupted in utter chaos. It is up to you to take the
+ risky journey into the final frontier and create an inhabitable
+ environment on a suitable planet for a future colony. Quick! Grab five
+ items to take with you. Choose wisely. Use your primal instincts! You
+ can go up from here. You see a chair on the ground outside the
+ spaceship. You see a iphone on the ground outside the spaceship. You
+ see a knife on the ground outside the spaceship. You see a flashlight
+ on the ground outside the spaceship. You see a hammer-head on the
+ ground outside the spaceship. You see a pillow on the ground outside
+ the spaceship. You see a seeds on the ground outside the spaceship.
+ you see a radio on the ground outside the spaceship. You see a
+ screwdriver on the ground outside the spaceship. You see a shovel-head
+ on the ground outside the spaceship.
+pickup shovel-head
+You are now carrying the shovel-head
+pickup hammer-head
+You are now carrying the hammer-head
+pickup seeds
+You are now carrying the seeds
+pickup flashlight
+You are now carrying the flashlight
+pickup knife
+You are now carrying the knife
+fly up
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly left
+You have just landed on the giving planet. You can go forward from
+ here. You can go right from here. You see a wood-pile on the ground
+ outside the spaceship. You see a brick-pile on the ground outside the
+ spaceship.
+pickup wood-pile
+You are now carrying the wood-pile
+pickup brick-pile
+You are now carrying the brick-pile
+fly forward
+You have just landed on planet fifty-one. Ever heard of it? You can go
+ back from here. You see a strawberry on the ground outside the
+ spaceship.
+eat strawberry
+You dont have the strawberry
+pickup strawberry
+You are now carrying the strawberry
+eat strawberry
+You have just eaten a strawberry. It was delicious and you wonder how
+ it got there in the first place.
+fly back
+You have just landed on the giving planet. You can go forward from
+ here. You can go right from here.
+fly right
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly right
+You have just landed on planet octopusdisco. What you see on the
+ ground does not mean there were hoes but you may want it for another
+ garden tool. You can go left from here. You see a steel-pole on the
+ ground outside the spaceship.
+pickup steel-pole
+You are now carrying the steel-pole
+attach steel-pole shovel-head
+You have attached the shovel-head to the steel-pole and you now have a
+ useable shovel. Pick it up from the ground if you want to keep it.
+pickup shovel
+You are now carrying the shovel
+look
+You have just landed on planet octopusdisco. What you see on the
+ ground does not mean there were hoes but you may want it for another
+ garden tool. You can go left from here.
+fly left 
+You have successfully landed on planet bluefish the planet with the
+ purple fish. Though you may not be able to eat the fish use this
+ planet as your center if you get lost. You can go up from here. You
+ can go back from here. You can go forward from here. You can go right
+ from here. You can go left from here.
+fly up
+You have just landed on planet aladdin. You can go left from here. You
+ can go down from here.
+fly left
+You have just landed on planet voi dire. Does it really matter? You
+ can go forward from here. You can go right from here. You see a apple
+ on the ground outside the spaceship.
+fly forward
+You have just landed on planet mc. What time is it? You can go back
+ from here. You see a gold-pole on the ground outside the spaceship.
+pickup gold-pole
+You are now carrying the gold-pole
+weld gold-pole hammer-head
+You have welded the hammer-head to the gold-pole and you now have a
+ useable hammer.
+fly back
+You have just landed on planet voi dire. Does it really matter? You
+ can go forward from here. You can go right from here. You see a apple
+ on the ground outside the spaceship.
+fly right
+You have just landed on planet aladdin. You can go left from here. You
+ can go down from here.
+set-up wood-pile land
+You need to build a house first.
+build brick-pile land
+You have built a sturdy house out of bricks!
+dig shovel land
+It looks like there is going to be an asteroid shower soon. Maybe you
+ should build a secure shelter first...
+set-up wood-pile land
+You have successfully set up a protective wooden fence around your
+ house.
+plant seeds land
+You need some kind of source of water first if you want to plant
+ seeds.
+dig shovel land
+You have dug a hole deep enough to hit a water source and create a
+ well!
+plant seeds land
+You have successfully planted your seeds and set up artifical lighting
+ with your flashlight so that they can begin growing.
+settle
+An alien sees that you are trying to settle on his planet and tries to
+ stop you by throwing hot bananas at your face. Luckily you were smart
+ enough to bring a knife to defend yourself. Congratulations! You have
+ succesfully built shelter and protection and a source of water and a
+ source of food. You will be able to sustain an entire colony here
+ while you watch from afar as earth slowly withers away. Colonizer
+ level 5 you can type start-over or quit.
+quit
+NIL
+CL-USER(25): (dribble)

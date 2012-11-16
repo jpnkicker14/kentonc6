@@ -33,9 +33,6 @@
 ;keeps track of if the fence has been built yet
 (defparameter *fence-set-up* nil)
 
-;keeps track of if the tank has been filled with water
-(defparameter *tank-dunked* nil)
-
 ;keep track of if the well has been dug
 (defparameter *well-dug* nil)
 
@@ -105,12 +102,12 @@
 ;use at the end when user is satisfied with their work done in outer space and want to settle
 (defun settle ()
   (if (not (have 'knife))
-      '(you are about to settle peacefully on your new planet when suddenly a giant alien appears out of nowhere! as you search frantically for some kind of weapon to defend yourself it reaches out and touches you with one of its long greasy alien arms and then picks you up and eats you. i guess you should have brought a weapon.)
-    (progn (cond ((and *fence-set-up* *well-dug* *seeds-planted*) '(president))
-                 ((and (not *seeds-planted*) *fence-set-up* *well-dug*) '(professional))
-                 ((and (not *well-dug*) *fence-set-up*) '(expert))
-                 ((and (not *fence-set-up*) *house-built*) '(intermediate))
-                 (t '(beginner))))))
+      '(you are about to settle peacefully on your new planet when suddenly a giant alien appears out of nowhere! as you search frantically for some kind of weapon to defend yourself it reaches out and touches you with one of its long greasy alien arms and then picks you up and eats you. i guess you should have brought a weapon. colonizer level 0. you can type start-over or quit.)
+    (progn (cond ((and *fence-set-up* *well-dug* *seeds-planted*) '(an alien sees that you are trying to settle on his planet and tries to stop you by throwing hot bananas at your face. luckily you were smart enough to bring a knife to defend yourself. congratulations! you have succesfully built shelter and protection and a source of water and a source of food. you will be able to sustain an entire colony here while you watch from afar as earth slowly withers away. colonizer level 5. you can type start-over or quit.))
+                 ((and (not *seeds-planted*) *fence-set-up* *well-dug*) '(an alien sees that you are trying to settle on his planet and tries to stop you by talking smack about your grandma. luckily you were smart enough to bring a knife to defend yourself. good job on creating your own shelter and protection and source of water. too bad you will eventually starve to death because you have no food to eat. colonizer level 4. you can type start-over or quit.))
+                 ((and (not *well-dug*) *fence-set-up*) '(an alien sees that you are trying to settle on his planet and tries to stop you by challenging you to a dance battle. luckily you were smart enough to bring a knife to defend yourself. good job on creating a shelter and protection. but i dont know what you are going to do without food and water. should have thought about that earlier! colonizer level 3. you can type start-over or quit.))
+                 ((and (not *fence-set-up*) *house-built*) '(an alien sees that you are trying to settle on his planet and tries to stop you by jumping up and down ferociously to create giant planet tremors. luckily you were smart enough to bring a knife to defend yourself. good job on creating a shelter! but i think you are going to need more protection than that. also you will either starve or dehydrate yourself to death. have fun with that. colonizer level 2. you can type start-over or quit.))
+                 (t '(an alien sees that you are trying to settle on his planet and tries to stop you by excreting digusting alien slime in your general direction. luckily you were smart enough to bring a knife to defend yourself. now you are stuck alone on a strange planet with no shelter protection or food or water. maybe you should have just kept the alien so youd have company. colonizer level 1. you can type start-over or quit.))))))
 
 ;keeps track of the objects that were picked up 
 (defun inventory ()

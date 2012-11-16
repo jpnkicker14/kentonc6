@@ -99,6 +99,15 @@
       '(you cannot get that.))
 ))          
 
+;allows user to eat edible objects
+(defun eat (object)
+   ;first check if you have the object
+   (if (not (have ',object)) `(you dont have the ,object)
+   (progn (cond ((eq object banana) '(you have eaten the poisonous banana! you were warned but now you are dead. you can type start-over or quit.))
+               ((eq object apple) '(you have just eaten an apple. it was pretty good. but now you are even more hungry.))
+               ((eq object strawberry) '(you have just eaten a strawberry. it was delicious and you wonder how it got there in the first place.))))))
+               
+
 ;use at the end when user is satisfied with their work done in outer space and want to settle
 (defun settle ()
    (if (not (eq *location* p5) '(you cannot settle here. the conditions are not right.)
